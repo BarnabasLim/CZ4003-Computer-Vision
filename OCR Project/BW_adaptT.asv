@@ -1,0 +1,22 @@
+function BW =BW_adaptT(gray, sensitivity)
+%https://www.mathworks.com/help/images/ref/adaptthresh.html#namevaluepairs
+%Sensitivity: Determine which pixels get thresholded as foreground pixels, 
+%specified as a number in the range [0, 1]. 
+%High sensitivity values lead to thresholding more pixels as foreground, 
+%at the risk of including some background pixels.
+I=gray
+
+T = adaptthresh(I, sensitivity);
+BW = double(imbinarize(I,T));
+BW=double(gray);
+
+% min_P=double(min(BW1(:)))%Min intensity=13
+% max_P=double(max(BW1(:)))%Max intensity=204
+% BW2 = uint8((double(BW1(:,:))-min_P).*(255/(max_P-min_P)))
+% BW = uint8([[255 255 255 255] 
+%     [255 255 0 255] 
+%     [255 255 0 255] 
+%     [255 255 0 255]])
+% figure
+% imshowpair(I, BW, 'montage')
+end
